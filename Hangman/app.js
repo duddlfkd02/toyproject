@@ -10,16 +10,18 @@ window.onload = function () {
     let counter;
     let lives;
     let space;
-    let categories
-    let chosenCategory
+    let categories;
+    let chosenCategory;
+    let alphabet_container;
+    let alphaBox;
 
     let categoryName = document.getElementById('categoryName');
 
 
     // 알파벳 버튼 만들기
     const buttons = function () {
-        const alphabet_container = document.querySelector('#alphabet_container');
-        const alphaBox = document.createElement('ul');
+        alphabet_container = document.querySelector('#alphabet_container');
+        alphaBox = document.createElement('ul');
 
         for (let i = 0; i < alphabet.length; i++) {
             alphaBox.id = 'alphabet_container';
@@ -127,7 +129,7 @@ window.onload = function () {
         space = 0;
         result();
         comments();
-        hintCate()
+        hintCate();
 
     }//gameStart fnt
 
