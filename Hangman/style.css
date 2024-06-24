@@ -42,13 +42,16 @@ body {
     font-size: 20px;
 }
 
-.alphabet_container {
+#alphabet_container {
+    width: 800px;
+    flex-wrap: wrap;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 24px 0px;
 }
 
-.alphabet_container .btn {
+#alphabet_btn {
     width: 40px;
     height: 40px;
     border-radius: 5px;
@@ -60,7 +63,7 @@ body {
     cursor: pointer;
 }
 
-.alphabet_container .btn:hover {
+#alphabet_btn:hover {
     outline: 1px solid var(--color-grey);
 }
 
