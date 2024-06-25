@@ -10,35 +10,35 @@
 
 <body>
     <div class="container">
-        <input type="text" class="display">
+        <input type="text" class="showNumber">
 
         <div class="buttons_wrap">
             <div class="buttons">
-                <button class="wideBtn">AC</button>
-                <button class="clacBtn">/</button>
+                <button onclick="reset()" class="wideBtn">AC</button>
+                <button class="calcBtn operator">/</button>
             </div>
             <div class="buttons">
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button class="clacBtn">*</button>
+                <button onclick="input(7)">7</button>
+                <button onclick="input(8)">8</button>
+                <button onclick="input(9)">9</button>
+                <button class="calcBtn operator">*</button>
             </div>
             <div class="buttons">
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button class="clacBtn">-</button>
+                <button onclick="input(4)">4</button>
+                <button onclick="input(5)">5</button>
+                <button onclick="input(6)">6</button>
+                <button class="calcBtn operator">-</button>
             </div>
             <div class="buttons">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button class="clacBtn">+</button>
+                <button onclick="input(1)">1</button>
+                <button onclick="input(2)">2</button>
+                <button onclick="input(3)">3</button>
+                <button class="calcBtn operator">+</button>
             </div>
             <div class="buttons">
-                <button class="zeroBtn">0</button>
-                <button>.</button>
-                <button class="clacBtn">=</button>
+                <button onclick="input(0)" class="zeroBtn">0</button>
+                <button onclick="input('.')">.</button>
+                <button class="calcBtn result">=</button>
             </div>
         </div>
     </div>
