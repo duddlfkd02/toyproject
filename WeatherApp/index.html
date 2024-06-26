@@ -9,19 +9,58 @@
 </head>
 
 <body>
-    <div class="location">
-        <h1 class="location-timezone">Timezone</h1>
-        <p>Icon</p>
-    </div>
-    <div class="temperature">
-        <div class="degree-section">
-            <h2 class="temperature-degree">34</h2>
-            <span>F</span>
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="도시 이름을 입력하세요." spellcheck="false">
+            <button><img src="images/search.png" alt="search"></button>
         </div>
-
-        <div class="temperature-description">Its hot</div>
+        <div class="weather">
+            <img src="images/rain.png" alt="rain" class="weather-icon">
+            <h1 class="temp">22°C</h1>
+            <h2 class="city">Korea</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="images/humidity.png">
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="images/wind.png">
+                    <div>
+                        <p class="wind">15 km/h</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script src="app.js"></script>
+    <script>
+        // const apiKey = "702d9ee76b7a0a07725030f59039c210";
+        // const apiUrl = "https://api.openweathermap.org/data/3.0/weather?units=metric&q=bangalore";
+
+        // async function checkWeather() {
+        //     const response = await fetch(apiUrl + `&appid${apiKey}`);
+        //     let data = await response.json();
+
+
+        //     console.log(data);
+        // }
+        // checkWeather();
+
+        function checkWeather() {
+            fetch('https://goweather.herokuapp.com/weather/Seoul')
+                .then((response) => response.json())
+                .then((data) => {
+                    document.querySelector('.temp').innerHTML = data['temperature']
+                })
+        }
+
+        checkWeather()
+    </script>
 </body>
 
 </html>
