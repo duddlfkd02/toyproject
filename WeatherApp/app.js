@@ -3,9 +3,10 @@ const COORDS = 'coords'; //localStorated에 저장할 키 이름
 
 // api 받아온 값 입력할 변수
 const weather = document.querySelector('.temp');
-const city = document.querySelector('.city');
+const country = document.querySelector('.city');
 const humidity = document.querySelector('.humidity');
 const windy = document.querySelector('.wind');
+const weatherIcon = document.querySelector('.weather-icon');
 
 
 // api 정보 불러오는 함수
@@ -13,7 +14,7 @@ function getWeather(lat, lng) { //위도, 경도 넘겨받음
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=metric`)
         .then((response) => {
             //response로만 받아오면 body를 읽을 수 없어서 json으로 형태로 받아와야함
-            return response.json() //json 데이터 가져오기
+            return response.json(); //json 데이터 가져오기
         }).then((json) => {
             // console.log(json);
             const temperature = json.main.temp;
@@ -21,10 +22,21 @@ function getWeather(lat, lng) { //위도, 경도 넘겨받음
             const humidi = json.main.humidity;
             const wind = json.wind.speed;
             weather.innerText = `${parseInt(temperature)}°C`;
-            city.innerText = `${(cityName)}`;
+            country.innerText = `${(cityName)}`;
             humidity.innerText = `${parseInt(humidi)}%`;
             windy.innerText = `${parseInt(wind)}km/h`;
         });
+    if (json.weather[0].main === "Clouds") {
+        weatherIcon.src = "images/clouds.png";
+    } else if (json.weather[0].main === "Clear") {
+        weatherIcon.src = "images/clear.png";
+    } else if (json.weather[0].main === "Rain") {
+        weatherIcon.src = "images/rain.png";
+    } else if (json.weather[0].main === "Drizzle") {
+        weatherIcon.src = "images/drizzle.png";
+    } else if (json.weather[0].main === "Mist") {
+        weatherIcon.src = "images/mist.png";
+    }
 }
 
 //위치 받아온 객체를 localStorage에 저장하는 함수
