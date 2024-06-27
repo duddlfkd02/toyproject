@@ -38,29 +38,6 @@
     </div>
 
     <script src="app.js"></script>
-    <script>
-        // const apiKey = "702d9ee76b7a0a07725030f59039c210";
-        // const apiUrl = "https://api.openweathermap.org/data/3.0/weather?units=metric&q=bangalore";
-
-        // async function checkWeather() {
-        //     const response = await fetch(apiUrl + `&appid${apiKey}`);
-        //     let data = await response.json();
-
-
-        //     console.log(data);
-        // }
-        // checkWeather();
-
-        function checkWeather() {
-            fetch('https://goweather.herokuapp.com/weather/Seoul')
-                .then((response) => response.json())
-                .then((data) => {
-                    document.querySelector('.temp').innerHTML = data['temperature']
-                })
-        }
-
-        checkWeather()
-    </script>
 </body>
 
 </html>
