@@ -18,25 +18,25 @@ function getWeather(lat, lng) { //위도, 경도 넘겨받음
         }).then((json) => {
             // console.log(json);
             const temperature = json.main.temp;
-            const cityName = json.name;
             const humidi = json.main.humidity;
             const wind = json.wind.speed;
             weather.innerText = `${parseInt(temperature)}°C`;
-            country.innerText = `${(cityName)}`;
             humidity.innerText = `${parseInt(humidi)}%`;
             windy.innerText = `${parseInt(wind)}km/h`;
-        });
-    if (json.weather[0].main === "Clouds") {
-        weatherIcon.src = "images/clouds.png";
-    } else if (json.weather[0].main === "Clear") {
-        weatherIcon.src = "images/clear.png";
-    } else if (json.weather[0].main === "Rain") {
-        weatherIcon.src = "images/rain.png";
-    } else if (json.weather[0].main === "Drizzle") {
-        weatherIcon.src = "images/drizzle.png";
-    } else if (json.weather[0].main === "Mist") {
-        weatherIcon.src = "images/mist.png";
-    }
+
+            if (json.weather[0].main === "Clouds") {
+                weatherIcon.src = "images/clouds.png";
+            } else if (json.weather[0].main === "Clear") {
+                weatherIcon.src = "images/clear.png";
+            } else if (json.weather[0].main === "Rain") {
+                weatherIcon.src = "images/rain.png";
+            } else if (json.weather[0].main === "Drizzle") {
+                weatherIcon.src = "images/drizzle.png";
+            } else if (json.weather[0].main === "Mist") {
+                weatherIcon.src = "images/mist.png";
+            }
+        })
+
 }
 
 //위치 받아온 객체를 localStorage에 저장하는 함수
@@ -72,7 +72,7 @@ function loadCoords() {
         askForCoords();
     } else { // 저장된 값이 있다면 odj로 파싱해라
         const parsedCoords = JSON.parse(loadedCoords);
-        // console.log(parsedCoords);
+        console.log(parsedCoords);
         getWeather(parsedCoords.latitude, parsedCoords.longitude); // 파싱된 obj를 날씨 api로 넘기기
     }
 }
