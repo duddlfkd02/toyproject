@@ -1,5 +1,6 @@
 const notesContainer = document.querySelector('.note-container');
-const createBtn = document.querySelector('.btn');
+const createBtn = document.querySelector('.new-btn');
+const deleteBtn = document.querySelector('.delete-btn');
 let notes = document.querySelectorAll('.input-box');
 
 // 저장되어있는 메모들 불러오는 함수
@@ -21,6 +22,7 @@ createBtn.addEventListener('click', () => {
     inputBox.setAttribute('contenteditable', 'true');
     deleteImg.src = 'images/delete.png';
     notesContainer.appendChild(inputBox).appendChild(deleteImg);
+    updateStorage();
 });
 
 // 삭제하기 버튼, 작성하면 저장하는 함수 추가
@@ -38,6 +40,13 @@ notesContainer.addEventListener('click', function (e) {
     }
 })
 
+
+deleteBtn.addEventListener('click', () => {
+    window.localStorage.clear();
+    alert('All Notes deleted.');
+    history.go(0);
+})
+
 // 문자 줄바꿈 생성
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
@@ -45,3 +54,4 @@ document.addEventListener('keydown', (e) => {
         e.preventDefault();
     }
 })
+
