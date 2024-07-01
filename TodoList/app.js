@@ -1,7 +1,7 @@
-// list 추가하기
 const addContent = document.querySelector('.input_box');
-const memos = document.querySelectorAll('.list_inner');
 const listBox = document.querySelector('.list_box');
+const resetBtn = document.querySelector('.resetBtn');
+let memos = document.querySelectorAll('.list_inner');
 
 //메모 리스트 스토리지에 저장
 function saveMemo() {
@@ -11,7 +11,6 @@ function saveMemo() {
 //저장된 리스트 불러오기
 function showMemo() {
     listBox.innerHTML = localStorage.getItem('memos');
-    saveMemo();
 }
 // showMemo();
 
@@ -33,6 +32,8 @@ function plusContent() {
     listInner.appendChild(list).appendChild(deleteBtn);
     addContent.value = '';
 
+    resetBtn.style.display = 'block';
+
     deleteBtn.addEventListener('click', delteList);
     saveMemo();
 }
@@ -43,6 +44,11 @@ function delteList(e) {
         e.target.parentElement.remove();
         saveMemo();
     }
+}
+
+function reset() {
+    listBox.remove();
+    resetBtn.style.display = 'none'
 }
 
 //엔터 눌렀을 때 리스트 추가
