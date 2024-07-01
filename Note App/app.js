@@ -40,6 +40,18 @@ notesContainer.addEventListener('click', function (e) {
     }
 })
 
+function setCaret() {
+    var el = document.querySelector(".input-box")
+    var range = document.createRange()
+    var sel = window.getSelection()
+
+    range.setStart(el.childNodes[0], -1)
+    range.collapse(true)
+
+    sel.removeAllRanges()
+    sel.addRange(range)
+}
+
 
 deleteBtn.addEventListener('click', () => {
     window.localStorage.clear();

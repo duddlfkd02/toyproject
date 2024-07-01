@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List - Daily Mission</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1><img src="image/note.png"> To do List</h1>
+
+        <input type="text" placeholder="할 일을 입력하세요." class="input_box" onfocus="this.placeholder=''"
+            onblur="this.placeholder='할 일을 입력하세요.'">
+        <button class="plusBtn" onclick="plusContent()">추가</button>
+
+        <div class="list_box">
+            <!-- <ul class="list_inner">
+                <li class="list">리스트 1</li>
+                <li class="list">리스트 2</li>
+                <li class="list">리스트 3</li>
+            </ul> -->
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
