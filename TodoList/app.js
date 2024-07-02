@@ -55,8 +55,10 @@ function deleteList(e) {
 }
 
 function reset() {
-    listInner.remove();
-    window.localStorage.clear();
+    const listAll = document.querySelectorAll('.list_inner li');
+    for (let i = 0; i < listAll.length; i++) {
+        listAll[i].remove();
+    }
 }
 
 //엔터 눌렀을 때 리스트 추가
