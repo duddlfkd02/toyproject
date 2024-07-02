@@ -1,45 +1,43 @@
 const addContent = document.querySelector('.input_box');
-const listBox = document.querySelector('.list_box');
+const listInner = document.querySelector('.list_inner');
 const resetBtn = document.querySelector('.resetBtn');
-let memos = document.querySelectorAll('.list_inner');
+let memos = document.querySelectorAll('.list');
 
 //메모 리스트 스토리지에 저장
 function saveMemo() {
-    localStorage.setItem('memos', listBox.innerHTML);
+    localStorage.setItem('memos', listInner.innerHTML);
 }
 
 //저장된 리스트 불러오기
 function showMemo() {
-    listBox.innerHTML = localStorage.getItem('memos');
+    listInner.innerHTML = localStorage.getItem('memos');
 }
-// showMemo();
+showMemo();
 
 
 //추가버튼 누르면 리스트 추가
 function plusContent() {
-    const listInner = document.createElement('ul');
-    let list = document.createElement('li');
-    let deleteBtn = document.createElement('img');
+    if (addContent.value !== '') {
+        let list = document.createElement('li');
+        let deleteBtn = document.createElement('img');
 
-    listInner.className = 'list_box';
-    list.className = 'list';
-    deleteBtn.className = 'deleteBtn'
+        list.className = 'list';
+        deleteBtn.className = 'deleteBtn';
 
-    deleteBtn.src = 'image/delete.png';
-    list.innerHTML = addContent.value;
+        deleteBtn.src = 'image/delete.png';
+        list.innerHTML = addContent.value;
 
-    listBox.appendChild(listInner);
-    listInner.appendChild(list).appendChild(deleteBtn);
-    addContent.value = '';
+        listInner.appendChild(list).appendChild(deleteBtn);
+        addContent.value = '';
 
-    resetBtn.style.display = 'block';
+        deleteBtn.addEventListener('click', deleteList);
+        saveMemo();
+    }
 
-    deleteBtn.addEventListener('click', delteList);
-    saveMemo();
 }
 
 //리스트 옆 삭제 버튼 클릭시 삭제
-function delteList(e) {
+function deleteList(e) {
     if (e.target.tagName === 'IMG') {
         e.target.parentElement.remove();
         saveMemo();
@@ -47,13 +45,14 @@ function delteList(e) {
 }
 
 function reset() {
-    listBox.remove();
-    resetBtn.style.display = 'none'
+    listInner.remove();
+    window.localStorage.clear();
 }
 
 //엔터 눌렀을 때 리스트 추가
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
+function keyEnter() {
+    // console.log(event); Enter keyCode === 13
+    if (window.event.keyCode === 13) {
         plusContent();
     }
-});
+}
