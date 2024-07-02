@@ -20,18 +20,28 @@ function plusContent() {
     if (addContent.value !== '') {
         let list = document.createElement('li');
         let deleteBtn = document.createElement('img');
+        const newBtn = document.createElement('button');
 
         list.className = 'list';
         deleteBtn.className = 'deleteBtn';
+        newBtn.className = 'complete';
 
         deleteBtn.src = 'image/delete.png';
         list.innerHTML = addContent.value;
 
+        list.appendChild(newBtn);
         listInner.appendChild(list).appendChild(deleteBtn);
+        console.log(listInner);
+
+
         addContent.value = '';
 
         deleteBtn.addEventListener('click', deleteList);
         saveMemo();
+
+        newBtn.addEventListener('click', () => {
+            list.classList.toggle('complete');
+        })
     }
 
 }

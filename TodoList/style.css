@@ -9,6 +9,7 @@
     --color-lightGray: #eaeaea;
     --color-blue: #6fa9ff;
     --color-red: #ff7c7c;
+    --color-green: #4de307;
 }
 
 * {
@@ -79,14 +80,17 @@ body {
 }
 
 .container .list {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid var(--color-lightGray);
 }
 
 .container .deleteBtn {
+    position: absolute;
+    right: 0;
     width: 20px;
     height: 20px;
     cursor: pointer;
@@ -100,5 +104,24 @@ body {
     color: var(--color-red);
     font-weight: bold;
     background: transparent;
+    cursor: pointer;
+}
+
+.container .list_inner .list.complete {
+    text-decoration: line-through;
+    color: var(--color-gray);
+}
+
+.list_inner .list .complete::after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 10px;
+    position: absolute;
+    top: 14px;
+    right: 35px;
+    transform: translate(-2px, -2px) rotate(45deg);
+    border-right: 2px solid var(--color-green);
+    border-bottom: 2px solid var(--color-green);
     cursor: pointer;
 }
