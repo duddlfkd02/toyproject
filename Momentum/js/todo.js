@@ -2,7 +2,7 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.getElementById("todo-list");
 
-const toDos = [];
+let toDos = [];
 
 function saveToDos() {
     localStorage.setItem("todos", JSON.stringify(toDos));
@@ -23,6 +23,7 @@ function paintToDo(newTodo) {
     newLi.appendChild(newSpan);
     newLi.appendChild(newBtn);
     toDoList.appendChild(newLi);
+
 }
 
 
@@ -37,18 +38,13 @@ function handleToDoSubmit(event) {
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
 
-// function sayHello(item) {
-//     console.log("this is the turn of", item);
-// }
 
 const savedToDos = localStorage.getItem("todos")
-// console.log(savedToDos); //string
+
 
 if (savedToDos !== null) {
     const parsedTodos = JSON.parse(savedToDos);
-    // console.log(parsedTodos) //array
-    parsedTodos.forEach((item) => {
-        console.log("this is the turn of", item)
-    });//array의 각 item에 해당함수를 한번씩 실행
+    toDos = parsedTodos; //이전에 저장되어있던 리스트도 유지 (이전것 복원)
+    parsedTodos.forEach(paintToDo);
 }
 
