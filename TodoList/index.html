@@ -11,17 +11,17 @@
 <body>
     <div class="container">
         <h1><img src="image/note.png"> To do List</h1>
-
-        <input type="text" placeholder="할 일을 입력하세요." class="input_box" onfocus="this.placeholder=''"
-            onblur="this.placeholder='할 일을 입력하세요.'" onkeydown="keyEnter()">
-        <button class="plusBtn" onclick="plusContent()">추가</button>
-
+        <div id="inputField">
+            <input type="text" placeholder="할 일을 입력하세요." class="input_box" onfocus="this.placeholder=''"
+                onblur="this.placeholder='할 일을 입력하세요.'" onkeydown="keyEnter()">
+            <button class="plusBtn" onclick="plusBtn()">추가</button>
+        </div>
         <ul class="list_inner">
         </ul>
         <button class="resetBtn" onclick="reset()">전체삭제</button>
     </div>
-
-    <script src="app.js"></script>
+    <!-- <script src="app.js"></script> -->
+    <script src="app2.js"></script>
 </body>
 
 </html>

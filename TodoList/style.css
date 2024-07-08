@@ -79,20 +79,49 @@ body {
     color: var(--color-gray);
 }
 
-.container .list {
+.container .list_inner li {
     position: relative;
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid var(--color-lightGray);
 }
 
-.container .deleteBtn {
-    position: absolute;
-    right: 0;
+
+.list_inner li.complete {
+    text-decoration: line-through;
+    color: var(--color-gray);
+}
+
+.container .list_inner li button {
     width: 20px;
     height: 20px;
+    border: 2px solid var(--color-lightGray);
+    border-radius: 10px;
+    margin-right: 10px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.list_inner li.complete button::after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 10px;
+    position: absolute;
+    top: 15px;
+    left: 9px;
+    transform: translate(-2px, -2px) rotate(45deg);
+    border-right: 2px solid var(--color-green);
+    border-bottom: 2px solid var(--color-green);
+    cursor: pointer;
+}
+
+.deleteBtn {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 10px;
     cursor: pointer;
 }
 
@@ -104,24 +133,5 @@ body {
     color: var(--color-red);
     font-weight: bold;
     background: transparent;
-    cursor: pointer;
-}
-
-.container .list_inner .list.complete {
-    text-decoration: line-through;
-    color: var(--color-gray);
-}
-
-.list_inner .list .complete::after {
-    content: "";
-    display: block;
-    width: 5px;
-    height: 10px;
-    position: absolute;
-    top: 14px;
-    right: 35px;
-    transform: translate(-2px, -2px) rotate(45deg);
-    border-right: 2px solid var(--color-green);
-    border-bottom: 2px solid var(--color-green);
     cursor: pointer;
 }
