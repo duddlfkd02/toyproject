@@ -4,8 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notification Page</title>
+    <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
+    <section id="notification-container">
+      <header>
+        <h1>Notifications <span id="unread-count">0</span></h1>
+        <button id="mark-all-read">Mark all as read</button>
+      </header>
+      <ul id="notification-list">
+        <li class="notification">
+          <img src="user-image.jpg" alt="User profile image" class="user-image" />
+          <div class="notification-content">
+            <strong>User Name</strong> action details
+            <small>time</small>
+          </div>
+        </li>
+      </ul>
+    </section>
+
     <script src="./js/index.js" type="module"></script>
   </body>
 </html>
