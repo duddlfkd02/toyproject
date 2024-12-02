@@ -1,4 +1,5 @@
 import { MockData } from "../mockData.js";
+import { showModal } from "./modal.js";
 
 const notificationList = document.getElementById("notification-list");
 const unreadCountSpan = document.getElementById("unread-count");
@@ -13,7 +14,7 @@ const markAsRead = (id, notifications) => {
   }
 };
 
-const renderNotifications = (notifications) => {
+export const renderNotifications = (notifications) => {
   notificationList.innerHTML = "";
 
   const unreadCount = notifications.filter((notifi) => !notifi.read).length;
@@ -32,7 +33,8 @@ const renderNotifications = (notifications) => {
       </div>
 `;
 
-    li.addEventListener("click", () => markAsRead(notifications.id, notifications));
+    // li.addEventListener("click", () => markAsRead(notifications.id, notifications));
+    li.addEventListener("click", () => showModal(notification));
 
     notificationList.appendChild(li);
   });
