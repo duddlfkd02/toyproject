@@ -33,7 +33,6 @@ export const renderNotifications = (notifications) => {
       </div>
 `;
 
-    // li.addEventListener("click", () => markAsRead(notifications.id, notifications));
     li.addEventListener("click", () => showModal(notification));
 
     notificationList.appendChild(li);
