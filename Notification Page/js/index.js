@@ -1,20 +1,19 @@
-const fetchNotifications = async () => {
-  try {
-    const response = await fetch("db.json");
-    if (!response.ok) {
-      throw new Error("알림 데이터 불러오기 실패");
-    }
-    return await response.json();
-  } catch (error) {
-    console.log("알림 데이터 불러오기 오류 발생", error);
-    return [];
+import { MockData } from "../mockData.js";
+
+const notificationList = document.getElementById("notification-list");
+const unreadCountSpan = document.getElementById("unread-count");
+const markAllReadButton = document.getElementById("mark-all-read");
+
+// 1. 읽음 확인 함수
+const markAsRead = (id, notifications) => {
+  const notification = notifications.find((notifiId) => notifiId.id === id);
+  if (notification && !notification.read) {
+    notification.read = true;
+    renderNotifications(notifications);
   }
 };
 
 const renderNotifications = (notifications) => {
-  const notificationList = document.getElementById("notification-list");
-  const unreadCountSpan = document.getElementById("unread-count");
-
   notificationList.innerHTML = "";
 
   const unreadCount = notifications.filter((notifi) => !notifi.read).length;
@@ -24,39 +23,25 @@ const renderNotifications = (notifications) => {
     const li = document.createElement("li");
     li.className = `notification ${notification.read ? "read" : "unread"}`;
 
-    li,
-      (innerHTML = `
- <img src="${notification.image}" alt="${notification.user}'s profile image" class="user-image" />
+    li.innerHTML = `
+     <img src="${notification.image}" alt="${notification.user}'s profile image" class="user-image" />
       <div class="notification-content">
         <strong>${notification.user}</strong> ${notification.action}
         ${notification.details ? `<span>${notification.details}</span>` : ""}
         <small>${notification.time}</small>
       </div>
-`);
+`;
 
     li.addEventListener("click", () => markAsRead(notifications.id, notifications));
 
     notificationList.appendChild(li);
   });
-
-  const markAsRead = (notifications, id) => {
-    const notification = notifications.find((notifiId) => notifiId.id === id);
-    if (notification && !notification.read) {
-      notification.read = true;
-      renderNotifications(notifications);
-    }
-  };
-
-  document.getElementById("mark-all-read").addEventListener("click", () => {
-    alert("read");
-    notifications.forEach((notifi) => (notifi.read = true));
-    renderNotifications(notifications);
-  });
-
-  // let notifications = [];
-
-  fetchNotifications().then((data) => {
-    notifications = data;
-    renderNotifications(notifications);
-  });
 };
+
+// 3. 전부 읽음 함수
+markAllReadButton.addEventListener("click", () => {
+  MockData.forEach((notifi) => (notifi.read = true));
+  renderNotifications(MockData);
+});
+
+renderNotifications(MockData);
